@@ -9,14 +9,15 @@ import static com.realxode.luxuryhologram.Utils.decolor;
 
 public class HologramManager {
 
-    private LuxuryHologram main;
-    private String name;
+    private final LuxuryHologram main;
 
-    public HologramManager(LuxuryHologram main){
+    public HologramManager(LuxuryHologram main) {
         this.main = main;
     }
 
-    public void createHologram(String name, Location location, HologramType hologramType){
+    public void createHologram(String name, Location location, HologramType hologramType) {
+        if (location.getWorld() == null)
+            return;
         ArmorStand as = (ArmorStand) location.getWorld().spawnEntity(location, EntityType.ARMOR_STAND);
 
         as.setVisible(false);
@@ -25,7 +26,7 @@ public class HologramManager {
         as.setCustomName(color(name));
         as.setCustomNameVisible(true);
 
-        if (hologramType.equals(HologramType.TP_HOLOGRAM)){
+        if (hologramType.equals(HologramType.TP_HOLOGRAM)) {
 
             ArmorStand armorStand = (ArmorStand) location.getWorld().spawnEntity
                     (location.add(0, 0.3, 0), EntityType.ARMOR_STAND);
@@ -38,7 +39,7 @@ public class HologramManager {
             main.getConfig().set("TP_HOLOGRAM." + decolor(name) + ".command", "say Cambia esto en " +
                     "la configuración!");
             main.saveConfig();
-        } else if (hologramType.equals(HologramType.MSG_HOLOGRAM)){
+        } else if (hologramType.equals(HologramType.MSG_HOLOGRAM)) {
             ArmorStand armorStand = (ArmorStand) location.getWorld().spawnEntity
                     (location.add(0, 0.3, 0), EntityType.ARMOR_STAND);
             armorStand.setVisible(false);
@@ -48,8 +49,8 @@ public class HologramManager {
             armorStand.setCustomNameVisible(true);
 
             main.getConfig().set("MSG_HOLOGRAM." + decolor(name) + ".location", armorStand.getLocation());
-            main.getConfig().set("MSG_HOLOGRAM." + decolor(name) + ".command", "say Cambia esto en " +
-                            "la configuración!");
+            main.getConfig().set("MSG_HOLOGRAM." + decolor(name) + ".message", "say Cambia esto en " +
+                    "la configuración!");
             main.saveConfig();
         }
 
