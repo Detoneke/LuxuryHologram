@@ -1,0 +1,9 @@
+name: LuxuryHologram
+main: com.realxode.luxuryhologram.LuxuryHologram
+version: 1.0-SNAPSHOT
+api-version: 1.17
+author: RealXode
+
+commands:
+  lh:
+    description: Main command

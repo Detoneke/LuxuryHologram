@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="LuxuryHologram:jar">
+    <output-path>$USER_HOME$/Desktop/devtest mc/plugins</output-path>
+    <root id="archive" name="LuxuryHologram.jar">
+      <element id="module-output" name="LuxuryHologram" />
+    </root>
+  </artifact>
+</component>
